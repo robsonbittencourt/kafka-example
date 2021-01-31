@@ -25,7 +25,7 @@ class KafkaConsumerClient {
         kafkaConsumer.subscribe(listOf("topic"))
 
         while (true) {
-            val records = kafkaConsumer.poll(Duration.ofMillis(100))
+            val records = kafkaConsumer.poll(Duration.ofMillis(1000))
 
             if (!records.isEmpty) {
                 println("Found ${records.count()} records")
