@@ -16,6 +16,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.apache.kafka:kafka-clients:2.7.0")
+    implementation("com.google.code.gson:gson:2.8.6")
+
 }
 
 tasks.withType<Test> {
