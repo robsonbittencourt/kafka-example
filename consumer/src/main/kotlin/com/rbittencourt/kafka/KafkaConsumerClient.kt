@@ -8,20 +8,19 @@ import java.util.*
 
 class KafkaConsumerClient<T>(
     type: Class<T>,
+    private val topic: String,
     private val parser: ConsumerFunction<T>
 ) {
 
     private val kafkaConsumer: KafkaConsumer<String, T> = KafkaConsumer(getProperties(type))
 
     fun listen() {
-        kafkaConsumer.subscribe(listOf("topic"))
+        kafkaConsumer.subscribe(listOf(topic))
 
         while (true) {
             val records = kafkaConsumer.poll(Duration.ofMillis(100))
 
             if (!records.isEmpty) {
-                println("Found ${records.count()} records")
-
                 for (record in records) {
                     parser.consume(record)
                 }
