@@ -17,7 +17,6 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.apache.kafka:kafka-clients:2.7.0")
     implementation("com.google.code.gson:gson:2.8.6")
-
 }
 
 tasks.withType<Test> {
@@ -29,4 +28,11 @@ tasks.withType<KotlinCompile> {
         freeCompilerArgs = listOf("-Xjsr305=strict")
         jvmTarget = "11"
     }
+}
+
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "com.rbittencourt.kafka.MainKt"
+    }
+    from(configurations.compileClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
 }
