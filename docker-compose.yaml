@@ -3,6 +3,11 @@
 ---
 version: '3.4'
 services:
+  consumer:
+    image: robsonbittencourt/kafka-example-consumer:latest
+    container_name: consumer
+    network_mode: host
+
   zookeeper:
     image: confluentinc/cp-zookeeper:6.0.1
     hostname: zookeeper
