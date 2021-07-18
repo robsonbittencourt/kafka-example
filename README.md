@@ -26,4 +26,4 @@ On another terminal, run producer. This creates ten Order events. You can run th
 docker run --rm --name=producer --net=host robsonbittencourt/kafka-example-producer
 ```
 
-![running](running.gif)
+![running](running.gif) 
